@@ -8,4 +8,5 @@ Then it normalizes states, computes measurement probabilities and simulates the 
 To build and run it:
 
 make
+
 ./quantum_sim.exe
