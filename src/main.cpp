@@ -3,28 +3,28 @@
 #include "gates.hpp"
 
 int main() {
+    // Single qubit tests
     QubitState q;
     std::cout << "Initial state: " << q.to_string() << "\n";
 
-    q.state = Gates::apply(Gates::H, q.state);
+    q.state = Gates::apply2(Gates::H, q.state);
     q.normalize();
     std::cout << "After H: " << q.to_string() << "\n";
 
-    q.state = Gates::apply(Gates::X, q.state);
-    q.normalize();
-    std::cout << "After X: " << q.to_string() << "\n";
+    // Two-qubit test: entanglement
+    QubitState q1; // |0>
+    QubitState q2; // |0>
+    QubitState twoQubit(q1, q2); // |00>
+    std::cout << "Initial 2-qubit: " << twoQubit.to_string() << "\n";
 
-    q.state = Gates::apply(Gates::Z, q.state);
-    q.normalize();
-    std::cout << "After Z: " << q.to_string() << "\n";
+    // Apply H on first qubit manually: just modify q1 before tensor product
+    q1.state = Gates::apply2(Gates::H, q1.state);
+    q1.normalize();
+    QubitState entangled(q1, q2);
+    entangled.state = Gates::apply4(Gates::CNOT, entangled.state);
+    entangled.normalize();
 
-    q.state = Gates::apply(Gates::T, q.state);
-    q.normalize();
-    std::cout << "After T: " << q.to_string() << "\n";
+    std::cout << "After H ⊗ I then CNOT: " << entangled.to_string() << "\n";
 
-    double p0 = std::norm(q.state[0]);
-    double p1 = std::norm(q.state[1]);
-    std::cout << "Probabilities: |0⟩=" << p0 << ", |1⟩=" << p1 << "\n";
-
-    q.measure();
+    return 0;
 }

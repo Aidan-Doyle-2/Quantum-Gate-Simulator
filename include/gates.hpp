@@ -3,6 +3,7 @@
 #include <vector>
 
 using Matrix2x2 = std::vector<std::vector<std::complex<double>>>;
+using Matrix4x4 = std::vector<std::vector<std::complex<double>>>;
 
 namespace Gates {
     extern const Matrix2x2 X;
@@ -12,6 +13,15 @@ namespace Gates {
     extern const Matrix2x2 S;
     extern const Matrix2x2 T;
 
-    std::vector<std::complex<double>> apply(const Matrix2x2 &gate,
-                                            const std::vector<std::complex<double>> &state);
+    extern const Matrix4x4 CNOT;
+
+    // Single-qubit gates
+    std::vector<std::complex<double>> apply2(
+        const Matrix2x2 &gate,
+        const std::vector<std::complex<double>> &state);
+
+    // Two-qubit gates
+    std::vector<std::complex<double>> apply4(
+        const Matrix4x4 &gate,
+        const std::vector<std::complex<double>> &state);
 }
