@@ -6,5 +6,6 @@ It represents a qubit as a 2-dimensional complex vector, Then implements some co
 Then it normalizes states, computes measurement probabilities and simulates the quantum measurement with randomness.
 
 To build and run it:
+
 make
 ./quantum_sim.exe
