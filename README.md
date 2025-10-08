@@ -1,12 +1,31 @@
-# Quantum-Gate-Simulator
-This is a little simple quantum gate simulator I have built for a single qubit, and is mainly so I start coding in C++ more often.  
-It demonstrates how a quantum state can be represented, evolved, and measured using standard gates.
+# Quantum Gate Simulator 🧩
 
-It represents a qubit as a 2-dimensional complex vector, Then implements some common gates (pauli-X, pauli-y, pauli-z, hadamard etc.)
-Then it normalizes states, computes measurement probabilities and simulates the quantum measurement with randomness.
+A lightweight C++ program that simulates the fundamentals of quantum computation using single- and two-qubit systems.  
+It lets you construct and execute simple quantum circuits directly from the command line using familiar quantum gates.
 
-To build and run it:
+## 💡 Overview
+This project was built as a practice exercise to explore how quantum logic can be implemented at a low level without external frameworks.  
+Each qubit is represented as a complex vector, and gates are defined as unitary matrices. Quantum evolution is handled through matrix–vector 
+multiplication with normalization and probability tracking at every step.
 
-make
+Example usage:
 
-./quantum_sim.exe
+./quantum_sim.exe --circuit "H CNOT" --two-qubits
+
+This prepares a maximally entangled Bell state by applying a Hadamard gate to the first qubit followed by a CNOT.
+
+## ⚙️ Features
+- Command-line interface for building and running circuits  
+- Support for key quantum gates (X, Y, Z, H, S, T, CNOT)  
+- Matrix–vector evolution with normalization  
+- Modular directory structure (`src/`, `include/`, `Makefile`)  
+- Clean version control setup with `.gitignore`  
+
+## 🚀 Future Additions
+- Bloch sphere visualization  
+- Repeated measurements with histogram statistics  
+- Unit tests using Catch2  
+
+## 🧠 Why I Built This
+This project was my way of translating my understanding of quantum information theory into efficient C++ code.  
+It bridges my academic background in quantum computing with my interest in performance-oriented system design.
